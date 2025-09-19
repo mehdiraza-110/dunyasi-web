@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import GuestCard from "@/components/GuestCard";
 import type { Guest } from "@/components/GuestCard/guests";

@@ -1,6 +1,7 @@
 // components/ContactMapFooter.tsx
 
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { FormEvent } from "react";
 
@@ -200,7 +201,7 @@ export default function Footer() {
           <div className="grid grid-cols-1 gap-10 border-b border-white/10 pb-10 md:grid-cols-4">
             {/* Address / badge */}
             <div className="space-y-4">
-              <div className="h-14 w-14 rounded-full bg-white/10"><img src="logo.png" /></div>
+              <div className="h-14 w-14 rounded-full bg-white/10"><Image src="logo.png" alt={""} /></div>
               <address className="not-italic text-sm leading-relaxed text-slate-200/90">
                 Atatürk 7-8-9-10 Mah., Çobançeşme E5<br />
                 Yan yol Cad., No:84, Bakırköy / İstanbul

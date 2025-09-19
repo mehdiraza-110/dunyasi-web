@@ -1,7 +1,5 @@
 // app/board-of-directors/page.tsx
 import SectionImageWithText from "@/components/SectionImageWithText";
-import AboutHighlights from "@/components/FeatureCard/AboutHighlights";
-import { commissionData, CardIconName } from './commissionData';
 
 
 export default function CommissionDetails() {

@@ -7,10 +7,6 @@ import { CaretDown, SearchIcon } from "@/components/Icons";
 import { useEffect, useState } from "react";
 import { NAV_ITEMS, NavItem } from "@/components/Layout/navbarData";
 
-type HeaderProps = {
-  variant?: "light" | "dark";
-};
-
 /** ===== Desktop nested submenu ===== */
 function DesktopSubMenu({ items }: { items: NavItem[] }) {
   return (

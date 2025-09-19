@@ -1,7 +1,7 @@
 import { NewsCard } from "@/components/NewsCard";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Search, Newspaper, Filter } from "lucide-react";
+import { Search, Filter } from "lucide-react";
 
 const newsArticles = [
   {

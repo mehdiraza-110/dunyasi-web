@@ -3,7 +3,14 @@ import CardHero from "@/components/CardHero";
 import MediaSwitcherCard from "@/components/MediaSwitcherCard";
 
 import NewsChooseSection from "@/components/NewsCard/NewsSliderSection";
-import type { NewsItem } from "@/components/NewsCard";
+export type NewsItem = {
+  id: string;
+  tag?: string;
+  title: string;
+  excerpt?: string;
+  image: string;
+  href: string;
+};
 
 const ITEMS: NewsItem[] = [
   {

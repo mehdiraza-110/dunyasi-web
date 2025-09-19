@@ -21,7 +21,6 @@ export default function CardHero({
   highlight,
   ctaText,
   ctaHref,
-  openInNewTab,
   showBadge = true,
 }: CardHeroProps) {
   // Split title to inject highlight (optional)
