@@ -1,0 +1,217 @@
+"use client";
+
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+
+const schema = z.object({
+  fullName: z.string().min(3, "Full name is required"),
+  email: z.string().email("Invalid email address"),
+  phone: z.string().min(7, "Phone number is too short"),
+  company: z.string().min(2, "Company name is required"),
+  role: z.string().min(2, "Role is required"),
+  industry: z.string().min(2, "Industry is required"),
+  country: z.string().min(2, "Country is required"),
+  goals: z.string().min(10, "Please describe your goals in at least 10 characters"),
+});
+
+type FormData = z.infer<typeof schema>;
+
+export default function ApplyMembershipPage() {
+  const form = useForm<FormData>({
+    resolver: zodResolver(schema),
+    defaultValues: {
+      fullName: "",
+      email: "",
+      phone: "",
+      company: "",
+      role: "",
+      industry: "",
+      country: "",
+      goals: "",
+    },
+  });
+
+  const onSubmit = async (data: FormData) => {
+    try {
+      // Simulate API call
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+
+      toast.success("Your membership application was submitted successfully!");
+      // reset(`);
+    } catch (err) {
+      toast.error("Something went wrong. Please try again.");
+    }
+  };
+
+  return  (
+    <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
+      <div className="mb-10 text-center">
+        <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl">
+          Apply for Membership
+        </h1>
+        <p className="mt-4 text-lg text-gray-600">
+          Join our community of innovators, entrepreneurs, and leaders. 
+          Fill out the form below and our team will review your application.
+        </p>
+      </div>
+
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-6 rounded-lg bg-white p-8 shadow-md"
+        >
+          {/* Full Name */}
+          <FormField
+            control={form.control}
+            name="fullName"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Full Name *</FormLabel>
+                <FormControl>
+                  <Input placeholder="John Doe" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* Email */}
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email Address *</FormLabel>
+                <FormControl>
+                  <Input placeholder="you@example.com" type="email" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* Phone */}
+          <FormField
+            control={form.control}
+            name="phone"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Phone Number *</FormLabel>
+                <FormControl>
+                  <Input placeholder="+1 (555) 123-4567" type="tel" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* Company */}
+          <FormField
+            control={form.control}
+            name="company"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Company / Organization *</FormLabel>
+                <FormControl>
+                  <Input placeholder="Acme Inc." {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* Role */}
+          <FormField
+            control={form.control}
+            name="role"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Role / Position *</FormLabel>
+                <FormControl>
+                  <Input placeholder="CEO, Founder, etc." {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* Industry */}
+          <FormField
+            control={form.control}
+            name="industry"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Industry *</FormLabel>
+                <FormControl>
+                  <Input placeholder="Technology, Finance, etc." {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* Country */}
+          <FormField
+            control={form.control}
+            name="country"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Country *</FormLabel>
+                <FormControl>
+                  <Input placeholder="United States" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* Goals */}
+          <FormField
+            control={form.control}
+            name="goals"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>What are your goals for joining? *</FormLabel>
+                <FormControl>
+                  <Textarea
+                    rows={4}
+                    placeholder="Tell us how you’d like to benefit from membership..."
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* Submit */}
+          <div className="pt-4">
+            <Button
+              type="submit"
+              className="w-full"
+              disabled={form.formState.isSubmitting}
+            >
+              {form.formState.isSubmitting
+                ? "Submitting..."
+                : "Submit Application"}
+            </Button>
+          </div>
+        </form>
+      </Form>
+    </div>
+  );
+}
