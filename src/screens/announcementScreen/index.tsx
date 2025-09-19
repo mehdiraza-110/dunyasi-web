@@ -1,7 +1,7 @@
 import { AnnouncementCard } from "@/components/AccouncementCard";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Search, Bell, Filter } from "lucide-react";
+import { Search, Filter } from "lucide-react";
 
 const announcements = [
   {

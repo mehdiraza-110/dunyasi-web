@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import TenderCard from "@/components/TenderCard";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -107,7 +106,6 @@ export default function Tenders() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* <Header /> */}
       
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-primary/5 to-accent/5 py-16">
@@ -213,7 +211,7 @@ export default function Tenders() {
             <Tabs value={viewMode} className="w-full">
               <TabsContent value="grid" className="mt-0">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {filteredTenders.map((tender, index) => (
+                  {filteredTenders.map((tender) => (
                     <TenderCard
                       key={tender.id}
                       title={tender.title}

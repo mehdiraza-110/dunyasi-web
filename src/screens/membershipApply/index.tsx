@@ -7,7 +7,6 @@ import { toast } from "sonner";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
 import {
   Form,
   FormControl,
@@ -45,7 +44,7 @@ export default function ApplyMembershipPage() {
     },
   });
 
-  const onSubmit = async (data: FormData) => {
+  const onSubmit = async () => {
     try {
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1500));
@@ -53,7 +52,7 @@ export default function ApplyMembershipPage() {
       toast.success("Your membership application was submitted successfully!");
       // reset(`);
     } catch (err) {
-      toast.error("Something went wrong. Please try again.");
+      toast.error(`Something went wrong. Please try again. ${err}`);
     }
   };
 
